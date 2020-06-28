@@ -34,7 +34,7 @@ def data_generator():
 
         for filename in range(len(cheetah_list)):
             img_che = load_img(cheetah_list[filename])  # input images (cheetah)
-            X_che = img_to_array(img_che)  # convert images to arrays
+            X_che = img_to_array(img_che)  
             X_che = X_che.reshape((1,) + X_che.shape)
 
             # save results to the `wildcats_che/` directory
@@ -53,7 +53,7 @@ def data_generator():
 
         for filename in range(len(leopard_list)):
             img_leo = load_img(leopard_list[filename])  # input images (leopard)
-            X_leo = img_to_array(img_leo)  # convert images to arrays
+            X_leo = img_to_array(img_leo)  
             X_leo = X_leo.reshape((1,) + X_leo.shape) 
 
             # save results to the `wildcats_leo/` directory
@@ -68,4 +68,4 @@ def data_generator():
         print('augmentation not required')
 
 
-#THANK YOU, GOODBYE!
+
