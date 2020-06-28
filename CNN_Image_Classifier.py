@@ -28,7 +28,7 @@ import os
 data_generator()
 
 #load gray images
-data = '/home/mzwandile/Downloads/CNN/data/'
+data = '/home/mzwandile/Videos/wild_cats_classifier/data/'
 wild_cats = ["wildcats_che", "wildcats_leo"]
 
 #Image Visualization
@@ -85,20 +85,20 @@ for features, label in training_data:
 
 X = np.array(X)
 
-pickle_out = open('X_pickle', 'wb')
+pickle_out = open('pickle_files/X_pickle', 'wb')
 pickle.dump(X, pickle_out)
 pickle_out.close()
 
-pickle_out = open('y_pickle', 'wb')
+pickle_out = open('pickle_files/y_pickle', 'wb')
 pickle.dump(y, pickle_out)
 pickle_out.close()
 
 
 
-pickle_in = open('X_pickle', 'rb')
+pickle_in = open('pickle_files/X_pickle', 'rb')
 X = pickle.load(pickle_in)
 
-pickle_in = open('y_pickle', 'rb')
+pickle_in = open('pickle_files/y_pickle', 'rb')
 y = pickle.load(pickle_in)
 
 print(X[1])

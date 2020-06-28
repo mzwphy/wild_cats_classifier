@@ -6,8 +6,8 @@ from keras.preprocessing.image import load_img
 from PIL import Image
 import glob
 
-path_to_leopard = '/home/mzwandile/Downloads/CNN/data/leopard/'
-path_to_cheetah = '/home/mzwandile/Downloads/CNN/data/cheetah/'
+path_to_leopard = '/home/mzwandile/Videos/wild_cats_classifier/data/leopard/'
+path_to_cheetah = '/home/mzwandile/Videos/wild_cats_classifier/data/cheetah/'
 
 #Augmentation Switch. (Default = False)
 switch_on = False
@@ -38,7 +38,7 @@ def data_generator():
             X_che = X_che.reshape((1,) + X_che.shape)
 
             # save results to the `wildcats_che/` directory
-            out_path_che = '/home/mzwandile/Downloads/CNN/data/wildcats_che'
+            out_path_che = '/home/mzwandile/Videos/wild_cats_classifier/data/wildcats_che'
             i = 0
             for batch in datagen.flow(X_che, batch_size = 1, save_to_dir = out_path_che, save_prefix = 'che', save_format = 'jpeg'):
                 i += 1
@@ -57,7 +57,7 @@ def data_generator():
             X_leo = X_leo.reshape((1,) + X_leo.shape) 
 
             # save results to the `wildcats_leo/` directory
-            out_path_leo = '/home/mzwandile/Downloads/CNN/data/wildcats_leo'
+            out_path_leo = '/home/mzwandile/Videos/wild_cats_classifier/data/wildcats_leo'
             i = 0
             for batch in datagen.flow(X_leo, batch_size = 1, save_to_dir = out_path_leo, save_prefix = 'leo', save_format = 'jpeg'):
                 i += 1
