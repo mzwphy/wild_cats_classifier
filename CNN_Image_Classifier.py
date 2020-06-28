@@ -39,12 +39,12 @@ for cat in wild_cats:
         #plt.figure(figsize = (5, 4))
         #plt.imshow(image_list, cmap = 'gray')
         #plt.show()
-        break
-    break  
+        #break
+    #break  
  
 
-#specify required image size for the model [to make it uniform (n x n)]
-image_size = 50 #this you can change
+
+image_size = 50 
 
 new_array = cv2.resize(image_list, (image_size, image_size))
 #plt.figure(figsize = (5, 4))
@@ -56,12 +56,12 @@ training_data = []
 def make_featutes():
     for cat in wild_cats:  
         path = os.path.join(data, cat) 
-        class_num = wild_cats.index(cat)  # create classes  '0' for cheetah and '1' for leopard
-        for image in tqdm(os.listdir(path)):  # iterate over each image for each cat (leopard and cheetah)
+        class_num = wild_cats.index(cat)  
+        for image in tqdm(os.listdir(path)):  
             try:
-                image_array = cv2.imread(os.path.join(path, image) ,cv2.IMREAD_GRAYSCALE)  # convert to array
-                new_array = cv2.resize(image_array, (image_size, image_size))  # resize to normalize data size
-                training_data.append([new_array, class_num])  # add to training_data
+                image_array = cv2.imread(os.path.join(path, image) ,cv2.IMREAD_GRAYSCALE)  
+                new_array = cv2.resize(image_array, (image_size, image_size))  
+                training_data.append([new_array, class_num])  
             except Exception as e:  
                 pass
 
@@ -102,20 +102,8 @@ pickle_in = open('y_pickle', 'rb')
 y = pickle.load(pickle_in)
 
 print(X[1])
-'''
-plt.figure(figsize = (5, 4))
-for i in range(9):
-    plt.subplot(3, 3, i+1)
-    plt.imshow(X[i], cmap = 'gray')
-    plt.ylabel(y[i])
-    plt.xticks([])
-    plt.yticks([])
 
-plt.savefig('wildcat_grid.eps')
-plt.show()
-'''
-
-X = X/255.0
+X = X * (1/255.0)
 
 #Split data into training and testing sets
 train_features, test_features, train_targets, test_targets = train_test_split(X, y, random_state = 42, test_size = 0.25)
@@ -206,7 +194,7 @@ probability = pd.DataFrame({
     }
 )
 
-#Convert probabilities to classes in binary form
+#Convert probabilities to classes (0 or 1)
 for i in range(len(y_pred_cnn)):
     if y_pred_cnn[i] < 0.5:
         y_pred_cnn[i] = 0
