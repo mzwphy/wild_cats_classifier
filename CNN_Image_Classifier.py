@@ -193,23 +193,6 @@ plt.savefig('CNN_Model_Loss.eps')
 plt.show()
 
 
-# Show ROC curve
-ROC_auc_train = roc_auc_score(train_targets, cnn_model.predict(train_features))
-ROC_auc_test = roc_auc_score(test_targets, cnn_model.predict(test_features))
-fpr_train, tpr_train, thresholds_train = roc_curve(train_targets, cnn_model.predict_proba(train_features)[:,0])
-fpr_test, tpr_test, thresholds_test = roc_curve(test_targets, cnn_model.predict_proba(test_features)[:,0])
-plt.figure(figsize = (5, 4))
-plt.plot(fpr_test, tpr_test, label = 'test (auc = %.2f)' % ROC_auc_train, color = 'red')
-plt.plot(fpr_train, tpr_train, label = 'train (auc = %.2f)' % ROC_auc_test, color = 'black')
-plt.plot([0, 1], [0, 1], 'b--', label = 'no skill (auc = 0.50)')
-plt.title('ROC Curve', weight = 'bold')
-plt.xlabel('False Positive Rate', weight = 'bold')
-plt.ylabel('True Positive Rate', weight = 'bold')
-plt.legend(loc = 'best')
-plt.savefig('ROC_curve_CNN.eps')
-plt.show()
-
-
 # Evaluate model on the dataset reserved for testing
 score = cnn_model.evaluate(test_features, test_targets, verbose = 0)
 print('')
