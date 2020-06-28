@@ -129,19 +129,19 @@ train_features = train_features.reshape(len(train_features), image_size, image_s
 test_features = test_features.reshape(len(test_features), image_size, image_size, 1)
 
 
-#Initialize a CNN model
-filter_size = (3, 3)
+#Initialize a model
+kernel_size = (3, 3)
 pool_size = (2, 2)
 cnn_model = keras.models.Sequential([
-            keras.layers.Conv2D(32, filter_size, activation = 'relu', input_shape = (image_size, image_size, 1)),
+            keras.layers.Conv2D(32, kernel_size, activation = 'relu', input_shape = (image_size, image_size, 1)),
             keras.layers.MaxPooling2D(pool_size = pool_size),
             keras.layers.Dropout(0.5),
             
-            keras.layers.Conv2D(64, filter_size, activation = 'relu', padding = 'same'),
+            keras.layers.Conv2D(64, kernel_size, activation = 'relu', padding = 'same'),
             keras.layers.MaxPooling2D(pool_size = pool_size),
             keras.layers.Dropout(0.5),
 
-            keras.layers.Conv2D(64, filter_size, activation = 'relu', padding = 'same'),
+            keras.layers.Conv2D(64, kernel_size, activation = 'relu', padding = 'same'),
             keras.layers.MaxPooling2D(pool_size = pool_size),
             keras.layers.Dropout(0.5),
 
@@ -233,5 +233,5 @@ save_cnn = pd.DataFrame({
     }
 )
 
-save_cnn.to_csv("Image_predictions_CNN_wild_cats.csv", index = False)
+save_cnn.to_csv("Image_predictions_wild_cats.csv", index = False)
 print(save_cnn.head(50))
