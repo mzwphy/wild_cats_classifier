@@ -27,11 +27,11 @@ import os
 #Data Augmentation
 data_generator()
 
-#load gray images
-data = '/home/mzwandile/Videos/wild_cats_classifier/data/'
+#load images
+dir_1 = os.getcwd()
+data = dir_1 + '/data/'
 wild_cats = ["wildcats_che", "wildcats_leo"]
 
-#Image Visualization
 for cat in wild_cats:
     path = os.path.join(data, cat)
     for cat_image in os.listdir(path):
@@ -43,14 +43,8 @@ for cat in wild_cats:
     #break  
  
 
-
 image_size = 50 
-
 new_array = cv2.resize(image_list, (image_size, image_size))
-#plt.figure(figsize = (5, 4))
-#plt.imshow(new_array, cmap='gray')
-#plt.show()
-
 training_data = []
 
 def make_featutes():
@@ -71,10 +65,6 @@ print(len(training_data))
 
 #shuffle the images
 random.shuffle(training_data)
-
-for sample in training_data[:6]:
-    print(sample[1])
-
 
 X = []
 y = []
