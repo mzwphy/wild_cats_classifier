@@ -11,7 +11,7 @@ dir_1 = os.getcwd()
 path_to_leopard = dir_1 + '/data/leopard/'
 path_to_cheetah = dir_1 + '/data/cheetah/'
 
-#Augmentation Switch. (Default = False)
+#Augmentation Switch.
 switch_on = False
 #switch_on = True
 
